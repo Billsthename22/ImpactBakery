@@ -1,15 +1,15 @@
 "use client";
 
 import React from "react";
-import Image from "next/image";
 import Navbar from "./components/Navbar";
 import HeroSection from "./components/Herosection";
 import OurProducts from "./components/Products";
 import WhyChooseUs from "./components/Whychooseus";
 import ContactUs from "./components/ContactUs";
-import Clients from "@/app/components/Clients"
+import Clients from "./components/Clients";
 import Footer from "./components/Footer";
-export default function AboutSection(): JSX.Element {
+
+export default function HomePage() {
   return (
     <>
       {/* NAVBAR & HERO SECTION */}
@@ -23,17 +23,13 @@ export default function AboutSection(): JSX.Element {
           {/* Bottom Peach Oval */}
           <div
             className="absolute w-[600px] h-[380px] bg-[#f8d8c4] rounded-[50%] rotate-[25deg] opacity-90"
-            style={{
-              boxShadow: "0 0 60px rgba(248, 216, 196, 0.7)",
-            }}
+            style={{ boxShadow: "0 0 60px rgba(248, 216, 196, 0.7)" }}
           ></div>
 
           {/* Top Green Outline Oval */}
           <div
             className="absolute w-[560px] h-[320px] border-[3px] border-[#8bb99d] rounded-[50%] rotate-[20deg] opacity-80 translate-x-[-40px] translate-y-[-50px]"
-            style={{
-              boxShadow: "0 0 25px rgba(139, 185, 157, 0.4)",
-            }}
+            style={{ boxShadow: "0 0 25px rgba(139, 185, 157, 0.4)" }}
           ></div>
         </div>
 
@@ -57,26 +53,21 @@ export default function AboutSection(): JSX.Element {
               {/* Stacked Images */}
               <div className="relative w-full max-w-sm mt-10">
                 <div className="absolute -left-6 -top-6 w-44 h-28 rounded-md overflow-hidden shadow-lg rotate-[-8deg]">
-                  <Image
+                  <img
                     src="/bread.png"
                     alt="Bakery photo 1"
-                    width={400}
-                    height={220}
-                    className="object-cover"
+                    className="object-cover w-full h-full"
                   />
                 </div>
 
                 <div className="absolute left-8 top-20 w-52 h-36 rounded-md overflow-hidden shadow-lg rotate-[6deg]">
-                  <Image
+                  <img
                     src="/impact.png"
                     alt="Bakery photo 2"
-                    width={420}
-                    height={260}
-                    className="object-cover"
+                    className="object-cover w-full h-full"
                   />
                 </div>
 
-                {/* Increased top padding to push button below overlapping images */}
                 <div className="relative pt-60">
                   <button className="mx-auto block mt-6 border-2 border-[#f0a35a] text-[#f07a2a] px-6 py-2 rounded-full text-sm font-semibold hover:bg-[#f07a2a] hover:text-white transition">
                     VIEW MORE
@@ -116,13 +107,7 @@ export default function AboutSection(): JSX.Element {
                     </button>
                   </div>
                   <p className="text-sm text-slate-600 leading-relaxed">
-                    Impact Bakery, a proud subsidiary of Impact Manufacturers
-                    Ltd., stands at the forefront of modern baking in Africa.
-                    With a commitment to innovation, consistency, and
-                    customer-centered excellence, we specialize in producing
-                    premium baked goods — breads, pastries, cakes, and specialty
-                    desserts — in line with the highest standards of hygiene and
-                    artistry.
+                    Impact Bakery, a proud subsidiary of Impact Manufacturers Ltd., stands at the forefront of modern baking in Africa. With a commitment to innovation, consistency, and customer-centered excellence, we specialize in producing premium baked goods — breads, pastries, cakes, and specialty desserts — in line with the highest standards of hygiene and artistry.
                   </p>
                 </article>
 
@@ -135,9 +120,7 @@ export default function AboutSection(): JSX.Element {
                     </button>
                   </div>
                   <p className="text-sm text-slate-600 leading-relaxed">
-                    To become Africa’s most trusted and innovative bakery brand,
-                    setting global standards for quality, creativity, and
-                    sustainable impact.
+                    To become Africa’s most trusted and innovative bakery brand, setting global standards for quality, creativity, and sustainable impact.
                   </p>
                 </article>
 
@@ -150,10 +133,7 @@ export default function AboutSection(): JSX.Element {
                     </button>
                   </div>
                   <p className="text-sm text-slate-600 leading-relaxed">
-                    To delight our customers daily with products that blend
-                    artisan excellence and industrial precision, creating
-                    moments of joy while contributing to our community and
-                    environment.
+                    To delight our customers daily with products that blend artisan excellence and industrial precision, creating moments of joy while contributing to our community and environment.
                   </p>
                 </article>
               </div>
@@ -162,15 +142,12 @@ export default function AboutSection(): JSX.Element {
         </div>
       </section>
 
-      <OurProducts/>
-
-      <WhyChooseUs/>
-
-<Clients/>
-
-      <ContactUs/>
-
-      <Footer/>
+      {/* OTHER SECTIONS */}
+      <OurProducts />
+      <WhyChooseUs />
+      <Clients />
+      <ContactUs />
+      <Footer />
     </>
   );
 }
