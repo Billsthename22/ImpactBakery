@@ -33,79 +33,85 @@ const testimonials: Testimonial[] = [
   },
 ];
 
-export default function Testimonials() {
+// ⭐ Custom Star component
+const Star = ({ filled }: { filled: boolean }) => (
+  <svg
+    className={`w-7 h-7 transition-all duration-300 ${
+      filled
+        ? "text-[#e57a2a] drop-shadow-[0_0_8px_rgba(229,122,42,0.5)]"
+        : "text-gray-300"
+    }`}
+    xmlns="http://www.w3.org/2000/svg"
+    fill={filled ? "currentColor" : "none"}
+    viewBox="0 0 24 24"
+    stroke="currentColor"
+    strokeWidth="1.5"
+  >
+    <path
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      d="M11.48 3.499a.562.562 0 011.04 0l2.01 4.077a.56.56 0 00.423.307l4.496.654c.484.07.678.665.327.998l-3.253 3.17a.56.56 0 00-.161.496l.768 4.476c.083.48-.422.848-.85.622L12.5 16.96a.56.56 0 00-.52 0l-4.027 2.118c-.429.226-.934-.142-.85-.622l.768-4.476a.56.56 0 00-.161-.496l-3.253-3.17a.56.56 0 01.327-.998l4.496-.654a.56.56 0 00.423-.307l2.01-4.077z"
+    />
+  </svg>
+);
+
+export default function Testimonials(): JSX.Element {
   const [current, setCurrent] = useState<number>(0);
 
   const renderStars = (count: number) =>
-    Array.from({ length: 5 }, (_, i) => (
-      <span
-        key={i}
-        className={`text-xl ${
-          i < count ? "text-yellow-400 drop-shadow-md" : "text-gray-300"
-        }`}
-      >
-        ★
-      </span>
-    ));
+    Array.from({ length: 5 }, (_, i) => <Star key={i} filled={i < count} />);
 
   return (
-    <section className="relative py-32 px-6 lg:px-20 bg-gradient-to-br from-[#fffdf9] to-[#fef7f0] overflow-hidden">
-      {/* Decorative background shapes */}
-      <div className="absolute -top-40 -left-28 w-[28rem] h-[28rem] bg-[#f9e4d0]/40 rounded-full blur-[120px]"></div>
-      <div className="absolute bottom-0 right-0 w-[34rem] h-[34rem] bg-[#d6e8dd]/40 rounded-full blur-[140px]"></div>
+    <section className="relative py-32 px-6 lg:px-20 bg-[#fff8f0] overflow-hidden">
+      
+      {/* Background accents */}
+      <div className="absolute -top-40 -left-20 w-[28rem] h-[28rem] bg-[#f3d3b5]/50 rounded-full blur-[120px]" />
+      <div className="absolute bottom-0 right-0 w-[32rem] h-[32rem] bg-[#e57a2a]/20 rounded-full blur-[150px]" />
 
       <div className="max-w-6xl mx-auto relative z-10 text-center">
-        <p className="text-xs tracking-[0.25em] font-semibold text-[#d28a3d] mb-3">
+        <p className="text-xs tracking-[0.25em] font-semibold text-[#e57a2a] mb-2">
           FROM OUR CLIENTS
         </p>
 
-        <h2 className="text-3xl lg:text-5xl font-serif text-gray-900 mb-16 leading-tight">
+        <h2 className="text-3xl lg:text-5xl font-serif text-[#5b3a29] mb-16">
           What Our Customers Say
         </h2>
 
-        {/* Slider */}
-        <div className="overflow-hidden h-[380px] flex justify-center">
+        {/* Card Slider */}
+        <div className="overflow-hidden h-[400px] flex justify-center">
           <AnimatePresence mode="wait">
             <motion.div
               key={current}
-              initial={{ opacity: 0, y: 30 }}
+              initial={{ opacity: 0, y: 40 }}
               animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -30 }}
-              transition={{ type: "spring", stiffness: 100, damping: 20 }}
+              exit={{ opacity: 0, y: -40 }}
+              transition={{ type: "spring", stiffness: 90, damping: 20 }}
               className="w-full flex justify-center"
             >
-              <motion.div
-                className="bg-white backdrop-blur-sm/50 shadow-2xl border border-[#f1e4d8] rounded-3xl p-12 max-w-3xl cursor-default hover:scale-[1.02] transition-transform duration-300"
-              >
-                {/* Star Rating */}
+              <div className="relative bg-white rounded-3xl shadow-xl border border-[#f2e3d3] p-12 max-w-3xl
+                backdrop-blur-sm hover:shadow-2xl transition-all duration-300 hover:scale-[1.015]">
+                
+                {/* Stars */}
                 <div className="flex justify-center mb-6">{renderStars(testimonials[current].rating)}</div>
 
-                <motion.p
-                  initial={{ opacity: 0, y: 10 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 0.2 }}
-                  className="text-gray-700 text-lg sm:text-xl mb-8 leading-relaxed"
-                >
+                {/* Testimonial Text */}
+                <p className="text-gray-700 text-lg sm:text-xl mb-10 leading-relaxed">
                   "{testimonials[current].text}"
-                </motion.p>
+                </p>
 
-                <motion.div
-                  initial={{ opacity: 0, y: 10 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 0.3 }}
-                  className="space-y-1"
-                >
-                  <h3 className="text-2xl font-semibold text-gray-900">
+                {/* Customer Info */}
+                <div>
+                  <h3 className="text-2xl font-semibold text-[#5b3a29]">
                     {testimonials[current].name}
                   </h3>
                   <p className="text-gray-500 text-sm tracking-wide">{testimonials[current].location}</p>
-                </motion.div>
-              </motion.div>
+                </div>
+              </div>
             </motion.div>
           </AnimatePresence>
         </div>
 
-        {/* Navigation dots */}
+        {/* Navigation Dots */}
         <div className="flex justify-center mt-12 space-x-3">
           {testimonials.map((_, idx) => (
             <button
@@ -114,7 +120,7 @@ export default function Testimonials() {
               className={`w-4 h-4 rounded-full transition-all duration-300 ${
                 idx === current
                   ? "bg-[#e57a2a] scale-125 shadow-md"
-                  : "bg-gray-300 opacity-60"
+                  : "bg-gray-300 opacity-50"
               }`}
             />
           ))}
