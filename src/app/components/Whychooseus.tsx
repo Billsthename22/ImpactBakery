@@ -50,7 +50,7 @@ export default function WhyChooseUs() {
         </div>
 
         <p className="max-w-3xl mx-auto text-gray-600 mt-6 mb-20 text-lg leading-relaxed">
-          Lovebite Foods & Beverages stands out through unmatched craftsmanship,
+       Impact Bakery stands out through unmatched craftsmanship,
           rich flavors, and a passion for creating the finest baked goods.
         </p>
 
