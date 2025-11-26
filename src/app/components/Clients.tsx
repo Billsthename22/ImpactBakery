@@ -55,7 +55,7 @@ const Star = ({ filled }: { filled: boolean }) => (
   </svg>
 );
 
-export default function Testimonials(): JSX.Element {
+export default function Testimonials() {
   const [current, setCurrent] = useState<number>(0);
 
   const renderStars = (count: number) =>
