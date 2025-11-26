@@ -33,7 +33,7 @@ const testimonials: Testimonial[] = [
   },
 ];
 
-export default function Testimonials(): JSX.Element {
+export default function Testimonials() {
   const [current, setCurrent] = useState<number>(0);
 
   // Helper to render stars
