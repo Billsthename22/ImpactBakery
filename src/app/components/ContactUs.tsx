@@ -3,22 +3,22 @@
 import { motion } from "framer-motion";
 
 export default function ContactUs() {
-  return (
+  return ( 
     <section className="relative py-28 px-6 lg:px-20 bg-[#fffdf9] overflow-hidden">
-
+      
       {/* BREAD BACKGROUND */}
       <div className="absolute inset-0">
         <img
-          src="/images/bread-background.jpg" // Replace with your bread image in public folder
+          src="/images/bread-background.jpg" // replace with your bread image in public folder
           alt="Bread background"
           className="w-full h-full object-cover opacity-20"
         />
-        {/* Overlay for readability & brand tint */}
-        <div className="absolute inset-0 bg-gradient-to-br from-[#8bb99d]/20 to-[#e57a2a]/20"></div>
+        {/* Optional overlay for readability */}
+        <div className="absolute inset-0 bg-[#fffdf9]/80"></div>
       </div>
 
       <div className="max-w-3xl mx-auto relative z-10 text-center">
-        <p className="text-sm tracking-widest font-semibold text-[#e57a2a]">
+        <p className="text-sm tracking-widest font-semibold text-[#b97a41]">
           CONTACT US
         </p>
 
@@ -36,24 +36,24 @@ export default function ContactUs() {
           <input
             type="text"
             placeholder="Your Name"
-            className="border border-gray-300 rounded-xl p-4 focus:outline-none focus:ring-2 focus:ring-[#8bb99d]"
+            className="border border-gray-300 rounded-xl p-4 focus:outline-none focus:ring-2 focus:ring-[#b97a41]"
           />
 
           <input
             type="email"
             placeholder="Your Email"
-            className="border border-gray-300 rounded-xl p-4 focus:outline-none focus:ring-2 focus:ring-[#8bb99d]"
+            className="border border-gray-300 rounded-xl p-4 focus:outline-none focus:ring-2 focus:ring-[#b97a41]"
           />
 
           <textarea
             placeholder="Your Message"
             rows={6}
-            className="border border-gray-300 rounded-xl p-4 focus:outline-none focus:ring-2 focus:ring-[#8bb99d] resize-none"
+            className="border border-gray-300 rounded-xl p-4 focus:outline-none focus:ring-2 focus:ring-[#b97a41] resize-none"
           ></textarea>
 
           <button
             type="submit"
-            className="bg-[#e57a2a] text-white font-semibold py-4 rounded-xl hover:bg-[#d96d23] transition"
+            className="bg-[#b97a41] text-white font-semibold py-4 rounded-xl hover:bg-[#c08649] transition"
           >
             Send Message
           </button>
