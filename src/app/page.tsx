@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import Navbar from "@/app/Components/Navbar";
+import Navbar from "@/app/components/Navbar";
 type Product = {
   id: number;
   name: string;
