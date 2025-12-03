@@ -235,8 +235,7 @@ export default function HomePage() {
               <p className="mt-3 text-gray-600">Order enquiries, wholesale or any questions — reach out and we'll respond promptly.</p>
 
               <div className="mt-6 space-y-3 text-sm text-gray-700">
-                <div>📍 0 Asaba Specialist Hospital Road Asaba, Delta State 
-                impactbakeryasb@gmail.com</div>
+                <div>📍 0 Asaba Specialist Hospital Road Asaba, Delta State </div>
                 <div>📞 +234 800 000 0000</div>
                 <div>✉️ impactbakeryasb@gmail.com</div>
               </div>
