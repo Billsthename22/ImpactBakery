@@ -31,7 +31,7 @@ export default function Navbar() {
           <Link href="#" className="text-[#0f1720] font-medium hover:text-[#e67a2d] transition">HOME</Link>
           <Link href="/AboutUs" className="text-[#0f1720] font-medium hover:text-[#e67a2d] transition">ABOUT US</Link>
           <Link href="#" className="text-[#0f1720] font-medium hover:text-[#e67a2d] transition">OUR PRODUCTS</Link>
-          <Link href="#" className="text-[#0f1720] font-medium hover:text-[#e67a2d] transition">GALLERY</Link>
+          <Link href="/Gallery" className="text-[#0f1720] font-medium hover:text-[#e67a2d] transition">GALLERY</Link>
           <Link href="#" className="text-[#0f1720] font-medium hover:text-[#e67a2d] transition">CONTACT US</Link>
         </nav>
 
