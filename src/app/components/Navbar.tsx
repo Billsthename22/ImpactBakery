@@ -29,7 +29,7 @@ export default function Navbar() {
         {/* Desktop Nav Links */}
         <nav className="hidden md:flex items-center gap-8">
           <Link href="#" className="text-[#0f1720] font-medium hover:text-[#e67a2d] transition">HOME</Link>
-          <Link href="#" className="text-[#0f1720] font-medium hover:text-[#e67a2d] transition">ABOUT US</Link>
+          <Link href="/AboutUs" className="text-[#0f1720] font-medium hover:text-[#e67a2d] transition">ABOUT US</Link>
           <Link href="#" className="text-[#0f1720] font-medium hover:text-[#e67a2d] transition">OUR PRODUCTS</Link>
           <Link href="#" className="text-[#0f1720] font-medium hover:text-[#e67a2d] transition">GALLERY</Link>
           <Link href="#" className="text-[#0f1720] font-medium hover:text-[#e67a2d] transition">CONTACT US</Link>
