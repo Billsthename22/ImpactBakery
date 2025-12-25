@@ -1,4 +1,5 @@
 "use client";
+import Image from "next/image";
 
 import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
@@ -12,12 +13,13 @@ type Product = {
 };
 
 const PRODUCTS: Product[] = [
-  { id: 1, name: "Sourdough Loaf", desc: "A tangy, chewy crusty loaf. Perfect for toasts and sandwiches.", price: "₦2,500", img: "/bread1.jpg" },
-  { id: 2, name: "Whole Wheat", desc: "Nutty whole grain bread, healthy and hearty.", price: "₦2,000", img: "/bread2.jpg" },
-  { id: 3, name: "French Baguette", desc: "Crispy crust with a soft interior — classic.", price: "₦1,800", img: "/bread3.jpg" },
-  { id: 4, name: "Ciabatta", desc: "Open crumb, great for paninis and dipping.", price: "₦2,200", img: "/bread4.jpg" },
-  { id: 5, name: "Rye Bread", desc: "Dense and flavorful, perfect for sandwiches with strong cheeses.", price: "₦2,300", img: "/bread5.jpg" },
-  { id: 6, name: "Brioche Loaf", desc: "Soft, slightly sweet bread, ideal for breakfast or desserts.", price: "₦2,800", img: "/bread6.jpg" },
+  { id: 1, name: "Impact Yummy Yummy", desc: "A tangy, chewy crusty loaf. Perfect for toasts and sandwiches.", price: "₦2,500", img: "/Bread/Impactyummyyummy.png" },
+  { id: 2, name: "Impat Tea Mate Bread", desc: "Nutty whole grain bread, healthy and hearty.", price: "₦2,000", img: "/bread2.jpg" },
+  { id: 3, name: "Impact Jumbo Bread", desc: "Crispy crust with a soft interior — classic.", price: "₦1,800", img: "/bread3.jpg" },
+  { id: 4, name: "Impact Tea Mate Jumbo Bread", desc: "Open crumb, great for paninis and dipping.", price: "₦2,200", img: "/bread4.jpg" },
+  { id: 5, name: "Impact Mini Bread", desc: "Dense and flavorful, perfect for sandwiches with strong cheeses.", price: "₦2,300", img: "/bread5.jpg" },
+  { id: 6, name: "Impact Small Bread", desc: "Soft, slightly sweet bread, ideal for breakfast or desserts.", price: "₦2,800", img: "/bread6.jpg" },
+  { id: 7, name: "Impact Medium Bread", desc: "Soft, slightly sweet bread, ideal for breakfast or desserts.", price: "₦2,800", img: "/bread6.jpg" },
 ];
 
 export default function HomePage() {
@@ -43,11 +45,11 @@ export default function HomePage() {
 
 <Navbar/>
         {/* HERO */}
-        <section id="home" className="relative h-[72vh] md:h-[80vh]">
+        <section id="home" className="relative h-[150vh] md:h-[100vh]">
           <div
             className="absolute inset-0 bg-cover bg-center"
             style={{
-              backgroundImage: "url('/bakery-hero.jpg')",
+              backgroundImage: "url('/ImpactBakeryimages/background.JPG')",
             }}
             aria-hidden
           />
@@ -78,126 +80,183 @@ export default function HomePage() {
           </div>
         </section>
 
-        {/* ABOUT */}
-        <section id="about" className="py-16 px-6 bg-white">
-          <div className="mx-auto max-w-6xl grid gap-8 md:grid-cols-2 items-center">
-            <div className="rounded-xl overflow-hidden shadow-lg">
-              <img src="/about.jpg" alt="About Impact Bakery" className="w-full h-80 object-cover" />
-            </div>
+  {/* ABOUT – Refined UI */}
+<section id="about" className="py-20 px-6 bg-[#043927]">
+  <div className="mx-auto max-w-6xl grid gap-12 md:grid-cols-2 items-center">
 
-            <div>
-              <h3 className="text-3xl font-bold text-[#0A8A3A]">About Impact Bakery</h3>
-              <p className="mt-4 text-gray-700">
-                Impact Bakery began as a small family bakery with a mission to bring premium-quality bread to our neighborhood.
-                Our bakers blend traditional techniques with modern quality standards to produce bread with exceptional flavor and texture.
-              </p>
+{/* Image */}
+<div className="relative max-w-lg">
+  {/* Decorative border */}
 
-              <p className="mt-4 text-gray-600">
-                We bake fresh every day, focusing on wholesome ingredients and consistent quality.
-              </p>
 
-              <div className="mt-6 flex gap-3">
-                <button onClick={() => setIsAboutOpen(true)} className="bg-[#FF8A00] text-white px-4 py-2 rounded-lg font-medium shadow hover:brightness-95 transition">Read More</button>
-                <a href="#products" className="px-4 py-2 rounded-lg border border-gray-200 text-gray-700 hover:bg-gray-50 transition">See Products</a>
-              </div>
-            </div>
-          </div>
-        </section>
+  <div className="relative z-10 aspect-[4/3] rounded-3xl overflow-hidden shadow-xl">
+    <Image
+      src="/ImpactBakeryimages/About.JPG"
+      alt="About Impact Bakery"
+      fill
+      sizes="(max-width: 768px) 100vw, 50vw"
+      className="object-cover"
+      priority
+    />
+  </div>
+</div>
 
-        {/* Products */}
-        <section id="products" className="py-16 px-6 bg-gray-50">
-          <div className="mx-auto max-w-6xl">
-            <h3 className="text-3xl font-bold text-[#0A8A3A] text-center">Our Bread Collection</h3>
-            <p className="text-center text-gray-600 mt-3 max-w-2xl mx-auto">Handcrafted loaves made with care — from rustic sourdough to soft whole wheat.</p>
 
-            <div className="mt-8 grid gap-6 md:grid-cols-2 lg:grid-cols-4">
-              {PRODUCTS.map((p) => (
-                <motion.article key={p.id} whileHover={{ scale: 1.03 }} className="group bg-white rounded-xl shadow-md overflow-hidden border">
-                  <div className="relative">
-                    <img src={p.img} alt={p.name} className="w-full h-44 object-cover group-hover:scale-105 transition-transform duration-300" />
-                    <div className="absolute left-3 top-3 bg-[#0A8A3A] text-white px-2 py-1 rounded-md text-xs font-semibold">{p.name.split(" ")[0]}</div>
-                  </div>
+    {/* Content */}
+    <div className="text-green-50">
+      <h3 className="text-4xl font-bold text-white">
+        About Impact Bakery
+      </h3>
 
-                  <div className="p-4">
-                    <h4 className="font-semibold text-gray-800">{p.name}</h4>
-                    <p className="mt-2 text-sm text-gray-600">{p.desc}</p>
+      <div className="mt-6 space-y-4 text-green-200 leading-relaxed">
+        <p>
+          Impact Bakery began as a small family bakery with one mission —
+          to bring premium-quality bread to our community.
+        </p>
 
-                    <div className="mt-4 flex items-center justify-between">
-                      <div className="text-lg font-bold text-[#0A8A3A]">{p.price}</div>
-                      <div className="flex items-center gap-2">
-                        <button onClick={() => setActiveProduct(p)} className="px-3 py-2 bg-[#FF8A00] text-white rounded-lg text-sm shadow hover:brightness-95 transition">Details</button>
-                        <button className="px-3 py-2 border border-gray-200 rounded-lg text-sm hover:bg-[#f3f3f3] transition">Add</button>
-                      </div>
-                    </div>
-                  </div>
-                </motion.article>
-              ))}
-            </div>
-          </div>
-        </section>
+        <p>
+          We blend traditional baking techniques with modern quality standards,
+          creating bread with exceptional flavor, texture, and consistency.
+        </p>
 
-        {/* Why Choose Us & What We Do */}
-        <section id="why" className="py-16 px-6 bg-white">
-          <div className="mx-auto max-w-6xl grid gap-10 md:grid-cols-2 items-start">
-            <div>
-              <h3 className="text-3xl font-bold text-[#0A8A3A]">Why Choose Impact Bakery</h3>
-              <ul className="mt-6 space-y-4">
-                <li className="flex items-start gap-3">
-                  <div className="w-10 h-10 rounded-md bg-[#0A8A3A] text-white flex items-center justify-center font-semibold">✓</div>
-                  <div>
-                    <h4 className="font-semibold">Fresh Every Day</h4>
-                    <p className="text-sm text-gray-600">We bake daily to ensure freshness in every bite.</p>
-                  </div>
-                </li>
+        <p>
+          Every loaf is baked fresh daily using wholesome ingredients
+          and a passion for excellence.
+        </p>
+      </div>
 
-                <li className="flex items-start gap-3">
-                  <div className="w-10 h-10 rounded-md bg-[#0A8A3A] text-white flex items-center justify-center font-semibold">⏱</div>
-                  <div>
-                    <h4 className="font-semibold">Fast Delivery</h4>
-                    <p className="text-sm text-gray-600">Timely deliveries so your bread arrives warm and fresh.</p>
-                  </div>
-                </li>
+      {/* Actions */}
+      <div className="mt-8 flex flex-wrap gap-4">
+        <button
+          onClick={() => setIsAboutOpen(true)}
+          className="px-6 py-3 rounded-full bg-[#FF6D2D] text-white font-semibold shadow-md hover:scale-105 transition"
+        >
+          Read Our Story
+        </button>
 
-                <li className="flex items-start gap-3">
-                  <div className="w-10 h-10 rounded-md bg-[#0A8A3A] text-white flex items-center justify-center font-semibold">🌾</div>
-                  <div>
-                    <h4 className="font-semibold">Quality Ingredients</h4>
-                    <p className="text-sm text-gray-600">We use carefully sourced grains and no unnecessary additives.</p>
-                  </div>
-                </li>
-              </ul>
-            </div>
+        <a
+          href="#products"
+          className="px-6 py-3 rounded-full border border-green-400 text-green-100 hover:bg-green-800 transition"
+        >
+          Explore Products
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
 
-            <div>
-              <h3 className="text-3xl font-bold text-[#0A8A3A]">What We Do</h3>
-              <div className="mt-6 space-y-4">
-                <div className="flex gap-4 items-start">
-                  <div className="w-12 h-12 rounded-lg bg-[#FF8A00] text-white flex items-center justify-center font-bold">B</div>
-                  <div>
-                    <h4 className="font-semibold">Baking</h4>
-                    <p className="text-sm text-gray-600">Crafting a range of bread styles to suit every taste.</p>
-                  </div>
-                </div>
+    {/* Products – New Showcase UI */}
+<section id="products" className="py-20 px-6 bg-[#043927]">
+  <div className="mx-auto max-w-7xl">
+    {/* Header */}
+    <div className="text-center max-w-3xl mx-auto">
+      <h3 className="text-4xl font-bold text-[#0A8A3A]">
+        Our Bread Collection
+      </h3>
+      <p className="mt-4 text-green-800">
+        Handcrafted loaves baked fresh daily — quality you can taste.
+      </p>
+    </div>
 
-                <div className="flex gap-4 items-start">
-                  <div className="w-12 h-12 rounded-lg bg-[#FF8A00] text-white flex items-center justify-center font-bold">W</div>
-                  <div>
-                    <h4 className="font-semibold">Wholesale</h4>
-                    <p className="text-sm text-gray-600">Supplying cafés, restaurants and stores with fresh bread.</p>
-                  </div>
-                </div>
+    {/* Products Grid */}
+    <div className="mt-16 grid gap-10 sm:grid-cols-2 lg:grid-cols-3">
+      {PRODUCTS.map((p) => (
+        <motion.div
+          key={p.id}
+          whileHover={{ y: -6 }}
+          className="group relative overflow-hidden rounded-3xl bg-white shadow-lg"
+        >
+          {/* Image */}
+          <div className="relative h-[320px] overflow-hidden">
+            <img
+              src={p.img}
+              alt={p.name}
+              className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-110"
+            />
 
-                <div className="flex gap-4 items-start">
-                  <div className="w-12 h-12 rounded-lg bg-[#FF8A00] text-white flex items-center justify-center font-bold">D</div>
-                  <div>
-                    <h4 className="font-semibold">Delivery</h4>
-                    <p className="text-sm text-gray-600">Local delivery available within city limits.</p>
-                  </div>
-                </div>
-              </div>
+            {/* Price Badge */}
+            <div className="absolute top-4 right-4 bg-[#0A8A3A] text-white px-4 py-2 rounded-full font-bold shadow-md">
+              {p.price}
             </div>
           </div>
-        </section>
+
+          {/* Overlay Content */}
+          <div className="absolute inset-0 flex flex-col justify-end bg-gradient-to-t from-black/70 via-black/20 to-transparent p-6 opacity-0 group-hover:opacity-100 transition">
+            <h4 className="text-xl font-semibold text-white">
+              {p.name}
+            </h4>
+            <p className="mt-2 text-sm text-green-100">
+              {p.desc}
+            </p>
+
+            <div className="mt-4 flex gap-3">
+              <button
+                onClick={() => setActiveProduct(p)}
+                className="px-4 py-2 rounded-full bg-[#FF8A00] text-white text-sm font-semibold hover:brightness-95"
+              >
+                View Details
+              </button>
+
+              <button
+                className="px-4 py-2 rounded-full border border-white text-white text-sm hover:bg-white hover:text-[#0A8A3A] transition"
+              >
+                Add to Cart
+              </button>
+            </div>
+          </div>
+        </motion.div>
+      ))}
+    </div>
+  </div>
+</section>
+
+
+  {/* Why Choose Us & What We Do */}
+<section id="why" className="py-16 px-6 bg-green-50">
+  <div className="mx-auto max-w-6xl grid gap-10 md:grid-cols-2">
+    {/* Why Choose Us */}
+    <div className="space-y-6">
+      <h3 className="text-3xl font-bold text-[#0A8A3A]">Why Choose Impact Bakery</h3>
+      <div className="grid gap-4">
+        {[
+          { icon: "✓", title: "Fresh Every Day", desc: "We bake daily to ensure freshness in every bite." },
+          { icon: "⏱", title: "Fast Delivery", desc: "Timely deliveries so your bread arrives warm and fresh." },
+          { icon: "🌾", title: "Quality Ingredients", desc: "We use carefully sourced grains and no unnecessary additives." },
+        ].map((item, i) => (
+          <div key={i} className="flex items-start gap-4 bg-white p-4 rounded-xl shadow-md hover:scale-105 transition-transform">
+            <div className="w-12 h-12 rounded-full bg-[#0A8A3A] text-white flex items-center justify-center text-xl font-bold">{item.icon}</div>
+            <div>
+              <h4 className="font-semibold text-[#0A8A3A]">{item.title}</h4>
+              <p className="text-gray-700 text-sm">{item.desc}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+
+    {/* What We Do */}
+    <div className="space-y-6">
+      <h3 className="text-3xl font-bold text-[#0A8A3A]">What We Do</h3>
+      <div className="grid gap-4">
+        {[
+          { icon: "B", title: "Baking", desc: "Crafting a range of bread styles to suit every taste." },
+          { icon: "W", title: "Wholesale", desc: "Supplying cafés, restaurants and stores with fresh bread." },
+          { icon: "D", title: "Delivery", desc: "Local delivery available within city limits." },
+        ].map((item, i) => (
+          <div key={i} className="flex items-start gap-4 bg-[#D6F5E1] p-4 rounded-xl shadow-md hover:scale-105 transition-transform">
+            <div className="w-12 h-12 rounded-full bg-[#FF8A00] text-white flex items-center justify-center text-xl font-bold">{item.icon}</div>
+            <div>
+              <h4 className="font-semibold text-[#0A8A3A]">{item.title}</h4>
+              <p className="text-gray-700 text-sm">{item.desc}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </div>
+</section>
+
+
 
         {/* Testimonials */}
         <section id="testimonials" className="py-16 px-6 bg-gray-50">

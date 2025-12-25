@@ -39,9 +39,9 @@ export default function AboutUs() {
             </h2>
 
             <p className="text-gray-700 text-lg leading-relaxed">
-              Impact Bakery is dedicated to crafting fresh, delicious baked goods made 
-              with passion and authenticity. Every loaf, pastry, and treat we bake 
-              reflects our commitment to quality and community.
+            Impact Bakery is a committed provider of fresh, quality-driven bakery products designed to serve the daily needs of families, retailers, and businesses across Asaba and beyond. As a subsidiary of Impact Manufacturers, we operate on a foundation of industrial excellence, modern production standards, and a passion for delivering superior value with every loaf.
+We specialize in producing soft, nutritious, and consistently fresh bread supported by efficient processes, reliable distribution, and strict hygiene practices. Our operations are powered by a skilled team dedicated to maintaining quality at every stagefrom ingredient selection to baking, packaging, and delivery.
+At our core, we represent reliability, accessibility, and service. We exist to ensure that homes and businesses can depend on a steady supply of wholesome bread crafted with care, expertise, and attention to detail. Guided by innovation and customer-focused values, Impact Bakery continues to build a reputation for products that are trusted, affordable, and made to enrich everyday living. at impact bakery we dont just delivere freshly baked goods and we deliver to your doorstep. Baked witgh love and 
             </p>
 
             <p className="text-gray-700 text-lg leading-relaxed mt-4">
