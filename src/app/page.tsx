@@ -1,9 +1,10 @@
 "use client";
-import Image from "next/image";
 
+import Image from "next/image";
 import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Navbar from "@/app/components/Navbar";
+
 type Product = {
   id: number;
   name: string;
@@ -168,6 +169,7 @@ export default function HomePage() {
         >
           {/* Image */}
           <div className="relative h-[320px] overflow-hidden">
+            
             <img
               src={p.img}
               alt={p.name}
