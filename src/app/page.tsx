@@ -1,7 +1,8 @@
 "use client";
 
-import Image from "next/image";
 import React, { useState, useEffect } from "react";
+import Image from "next/image";
+import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
 import { 
   FaArrowRight, 
@@ -9,9 +10,11 @@ import {
   FaStar, 
   FaMapMarkerAlt, 
   FaPhoneAlt, 
-  FaEnvelope, 
-  FaTimes // Added to fix the modal error
+  FaTimes,
+  FaCheckCircle,
+  FaWhatsapp 
 } from "react-icons/fa";
+import { Wheat, Flame, MapPin } from "lucide-react";
 import Navbar from "@/app/components/Navbar";
 
 type Product = {
@@ -24,10 +27,10 @@ type Product = {
 
 const PRODUCTS: Product[] = [
   { id: 1, name: "Impact Yummy Yummy", desc: "A tangy, chewy crusty loaf. Perfect for toasts and sandwiches.", price: "₦2,500", img: "/Bread/Impactyummyyummy.png" },
-  { id: 2, name: "Impact Tea Mate", desc: "Nutty whole grain bread, healthy and hearty.", price: "₦2,000", img: "/bread2.jpg" },
-  { id: 3, name: "Impact Jumbo", desc: "Crispy crust with a soft interior — classic loaf.", price: "₦1,800", img: "/bread3.jpg" },
+  { id: 2, name: "Impact Tea Mate", desc: "Nutty whole grain bread, healthy and hearty.", price: "₦2,000", img: "/Bread/Teamate.png" },
+  { id: 3, name: "Impact Jumbo", desc: "Crispy crust with a soft interior — classic loaf.", price: "₦1,800", img: "/Bread/jumbobread.png" },
   { id: 4, name: "Tea Mate Jumbo", desc: "Open crumb, great for paninis and dipping.", price: "₦2,200", img: "/bread4.jpg" },
-  { id: 5, name: "Impact Mini", desc: "Dense and flavorful, perfect for snacks.", price: "₦2,300", img: "/bread5.jpg" },
+  { id: 5, name: "Impact Mini", desc: "Dense and flavorful, perfect for snacks.", price: "₦2,300", img: "/Bread/ImpactMini.png" },
 ];
 
 export default function HomePage() {
@@ -45,50 +48,103 @@ export default function HomePage() {
     return () => clearInterval(t);
   }, [testimonials.length]);
 
+  const handleOrder = (productName: string) => {
+    const message = `Hello Impact Bakery, I would like to order: ${productName}`;
+    window.open(`https://wa.me/2348000000000?text=${encodeURIComponent(message)}`, "_blank");
+  };
+
   return (
     <div className="min-h-screen bg-[#FDFCF6] text-slate-900 selection:bg-amber-200">
       <Navbar />
 
-      {/* --- HERO SECTION --- */}
-      <section className="relative h-[90vh] flex items-center overflow-hidden">
-        <div className="absolute inset-0 z-0">
+    {/* --- HERO SECTION --- */}
+    <section className="relative h-screen min-h-[700px] flex items-center overflow-hidden bg-[#043927]">
+        {/* Background Image with Zoom Animation */}
+        <motion.div 
+          initial={{ scale: 1.1, opacity: 0 }}
+          animate={{ scale: 1, opacity: 1 }}
+          transition={{ duration: 1.5, ease: "easeOut" }}
+          className="absolute inset-0 z-0"
+        >
           <Image 
             src="/ImpactBakeryimages/background.JPG" 
             alt="Bakery Background" 
             fill 
-            className="object-cover brightness-[0.6]"
+            className="object-cover brightness-[0.5] contrast-[1.1]"
             priority
           />
-        </div>
+          {/* Gradient Overlay for Text Contrast */}
+          <div className="absolute inset-0 bg-gradient-to-r from-[#043927]/90 via-[#043927]/40 to-transparent" />
+          <div className="absolute inset-0 bg-gradient-to-t from-[#043927] via-transparent to-transparent opacity-60" />
+        </motion.div>
         
         <div className="container mx-auto px-6 relative z-10">
           <motion.div 
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            className="max-w-3xl"
+            initial={{ opacity: 0, x: -50 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.8, delay: 0.2 }}
+            className="max-w-4xl"
           >
-            <span className="inline-block px-4 py-1 rounded-full bg-amber-500 text-white text-xs font-bold uppercase tracking-widest mb-4">
-              Baked Fresh at 4:00 AM Daily
-            </span>
-            <h1 className="text-6xl md:text-8xl font-black text-white leading-[0.9] tracking-tighter mb-6">
-              THE ART OF <br/> <span className="text-amber-400 italic font-light">Real Bread.</span>
+            {/* Animated Badge */}
+            <motion.div
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.5 }}
+              className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-amber-500/10 border border-amber-500/20 backdrop-blur-md text-amber-400 text-[10px] font-black uppercase tracking-[0.3em] mb-8"
+            >
+              <span className="relative flex h-2 w-2">
+                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-amber-400 opacity-75"></span>
+                <span className="relative inline-flex rounded-full h-2 w-2 bg-amber-500"></span>
+              </span>
+              Baked Fresh in Asaba at 4:00 AM
+            </motion.div>
+
+            <h1 className="text-6xl md:text-[10rem] font-black text-white leading-[0.8] tracking-tighter mb-8 uppercase">
+              The <span className="text-amber-500 italic font-serif font-light lowercase">Impact</span> <br/> 
+              <span className="relative">
+                Crust
+                <svg className="absolute -bottom-2 left-0 w-full h-3 text-amber-500/40" viewBox="0 0 100 10" preserveAspectRatio="none">
+                  <path d="M0 5 Q 25 0, 50 5 T 100 5" stroke="currentColor" strokeWidth="2" fill="none" />
+                </svg>
+              </span>
             </h1>
-            <p className="text-lg md:text-xl text-gray-200 mb-8 max-w-xl leading-relaxed">
-              Experience the crunch of the crust and the cloud-like softness of our handcrafted loaves, delivered from our oven to your table.
+
+            <p className="text-lg md:text-2xl text-emerald-50/80 mb-10 max-w-xl leading-relaxed font-medium">
+              Handcrafted with patience, baked on stone, and delivered with a passion for the perfect crumb. 
+              <span className="text-amber-400"> Experience bread the way it was meant to be.</span>
             </p>
-            <div className="flex flex-wrap gap-4">
-              <a href="#products" className="bg-amber-600 hover:bg-amber-700 text-white px-8 py-4 rounded-full font-bold transition-all flex items-center gap-2">
-                Shop Collection <FaShoppingBasket />
-              </a>
-              <a href="#about" className="backdrop-blur-md bg-white/10 border border-white/20 text-white px-8 py-4 rounded-full font-bold hover:bg-white/20 transition-all">
-                Our Story
-              </a>
+
+            <div className="flex flex-wrap gap-5">
+              <Link 
+                href="#products" 
+                className="group bg-amber-500 hover:bg-amber-600 text-[#043927] px-10 py-5 rounded-2xl font-black transition-all flex items-center gap-3 shadow-[0_20px_40px_rgba(245,158,11,0.2)] active:scale-95"
+              >
+                SHOP COLLECTION 
+                <FaShoppingBasket className="group-hover:rotate-12 transition-transform" />
+              </Link>
+              
+              <Link 
+                href="#about" 
+                className="group backdrop-blur-xl bg-white/5 border border-white/10 text-white px-10 py-5 rounded-2xl font-black hover:bg-white/10 transition-all flex items-center gap-3"
+              >
+                OUR STORY 
+                <FaArrowRight className="group-hover:translate-x-1 transition-transform text-amber-500" />
+              </Link>
             </div>
           </motion.div>
         </div>
-      </section>
 
+        {/* Floating Scroll Indicator */}
+        <motion.div 
+          animate={{ y: [0, 10, 0] }}
+          transition={{ repeat: Infinity, duration: 2 }}
+          className="absolute bottom-10 left-1/2 -translate-x-1/2 z-10 hidden md:block"
+        >
+          <div className="w-6 h-10 rounded-full border-2 border-white/20 flex justify-center p-1">
+            <div className="w-1 h-2 bg-amber-500 rounded-full" />
+          </div>
+        </motion.div>
+      </section>
       {/* --- ABOUT SECTION --- */}
       <section id="about" className="py-24 bg-white">
         <div className="container mx-auto px-6">
@@ -140,11 +196,12 @@ export default function HomePage() {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
-            {PRODUCTS.map((p) => (
+            {PRODUCTS.slice(0, 3).map((p) => (
               <motion.div 
                 key={p.id}
                 whileHover={{ y: -10 }}
-                className="bg-[#054d35] rounded-[2.5rem] p-4 border border-emerald-800 transition-all group"
+                className="bg-[#054d35] rounded-[2.5rem] p-4 border border-emerald-800 transition-all group cursor-pointer"
+                onClick={() => setActiveProduct(p)}
               >
                 <div className="relative h-72 rounded-[2rem] overflow-hidden mb-6">
                   <Image src={p.img} alt={p.name} fill className="object-cover group-hover:scale-110 transition-transform duration-700" />
@@ -155,44 +212,79 @@ export default function HomePage() {
                 <div className="px-4 pb-4">
                   <h3 className="text-2xl font-black text-white mb-2">{p.name}</h3>
                   <p className="text-emerald-100/60 text-sm mb-6 line-clamp-2 leading-relaxed">{p.desc}</p>
-                  <button 
-                    onClick={() => setActiveProduct(p)}
-                    className="w-full bg-amber-500 text-white py-4 rounded-2xl font-bold flex items-center justify-center gap-2 hover:bg-amber-600 transition-all shadow-lg"
-                  >
+                  <button className="w-full bg-amber-500 text-white py-4 rounded-2xl font-bold flex items-center justify-center gap-2 hover:bg-amber-600 transition-all">
                     View Bread Details <FaArrowRight size={14} />
                   </button>
                 </div>
               </motion.div>
             ))}
           </div>
+
+          <div className="mt-20 flex justify-center">
+            <Link href="/Products" className="group flex flex-col items-center gap-4">
+              <div className="bg-white/5 hover:bg-white/10 border border-emerald-700/50 px-8 py-4 rounded-full transition-all duration-300 backdrop-blur-sm">
+                <span className="text-white font-bold tracking-widest flex items-center gap-3">
+                  VIEW ALL PRODUCTS <FaArrowRight className="group-hover:translate-x-2 transition-transform text-amber-500" />
+                </span>
+              </div>
+            </Link>
+          </div>
         </div>
       </section>
 
-      {/* --- WHY US SECTION --- */}
-      <section className="py-24">
+      {/* --- REDESIGNED WHY US SECTION --- */}
+      <section className="py-24 bg-[#FDFCF6] overflow-hidden">
         <div className="container mx-auto px-6">
-          <div className="bg-amber-50 rounded-[4rem] p-12 md:p-20 grid md:grid-cols-3 gap-12">
-             <div className="text-center md:text-left">
-                <div className="w-16 h-16 bg-amber-500 text-white rounded-2xl flex items-center justify-center text-3xl mb-6 mx-auto md:mx-0 shadow-lg shadow-amber-200">🌾</div>
-                <h4 className="text-2xl font-black text-[#043927] mb-4">Premium Flour</h4>
-                <p className="text-slate-600">We source only the finest grains, ensuring a high protein content for that perfect rise and texture.</p>
-             </div>
-             <div className="text-center md:text-left">
-                <div className="w-16 h-16 bg-[#043927] text-white rounded-2xl flex items-center justify-center text-3xl mb-6 mx-auto md:mx-0 shadow-lg shadow-emerald-100">🔥</div>
-                <h4 className="text-2xl font-black text-[#043927] mb-4">Stone Baked</h4>
-                <p className="text-slate-600">Our ovens use traditional stone hearths to give our bread its signature thick, crunchy crust.</p>
-             </div>
-             <div className="text-center md:text-left">
-                <div className="w-16 h-16 bg-amber-600 text-white rounded-2xl flex items-center justify-center text-3xl mb-6 mx-auto md:mx-0 shadow-lg shadow-amber-200">🚚</div>
-                <h4 className="text-2xl font-black text-[#043927] mb-4">Local Delivery</h4>
-                <p className="text-slate-600">Operating within Asaba limits to ensure the loaf in your hand is as fresh as possible.</p>
-             </div>
+          <div className="flex flex-col items-center mb-16">
+            <div className="flex items-center gap-2 mb-4">
+              <div className="h-px w-8 bg-amber-500"></div>
+              <span className="text-amber-600 font-bold uppercase tracking-[0.4em] text-[10px]">The Impact Difference</span>
+              <div className="h-px w-8 bg-amber-500"></div>
+            </div>
+            <h2 className="text-4xl md:text-5xl font-black text-[#043927] text-center uppercase tracking-tighter">
+              WHAT MAKES OUR <br /> BREAD <span className="text-amber-600 italic">different?</span>
+            </h2>
+          </div>
+
+          <div className="grid md:grid-cols-3 gap-8 items-stretch">
+            <motion.div whileHover={{ y: -10 }} className="bg-white p-10 rounded-[3rem] shadow-sm border border-slate-100 group">
+              <div className="w-16 h-16 bg-amber-50 rounded-2xl flex items-center justify-center mb-8 group-hover:bg-amber-500 transition-colors">
+                <Wheat className="text-amber-600 group-hover:text-white" size={32} />
+              </div>
+              <h4 className="text-xl font-black text-[#043927] mb-4 uppercase">Premium Flour</h4>
+              <p className="text-slate-500 text-sm leading-relaxed mb-6">Unbleached, high-protein flour for that signature Impact "bounce".</p>
+              <div className="flex items-center gap-2 text-[10px] font-bold text-amber-600 uppercase tracking-widest mt-auto">
+                <FaCheckCircle /> 100% Natural Grains
+              </div>
+            </motion.div>
+
+            <motion.div whileHover={{ y: -20 }} className="bg-[#043927] p-10 rounded-[3rem] shadow-2xl md:-translate-y-8 group">
+              <div className="w-16 h-16 bg-white/10 rounded-2xl flex items-center justify-center mb-8 group-hover:bg-amber-500 transition-colors">
+                <Flame className="text-amber-500 group-hover:text-white" size={32} />
+              </div>
+              <h4 className="text-xl font-black text-white mb-4 uppercase">Stone Baked</h4>
+              <p className="text-emerald-100/60 text-sm leading-relaxed mb-6">Traditional hearth process creating a deep, caramelized crust.</p>
+              <div className="flex items-center gap-2 text-[10px] font-bold text-amber-500 uppercase tracking-widest mt-auto">
+                <FaCheckCircle /> Old-World Methods
+              </div>
+            </motion.div>
+
+            <motion.div whileHover={{ y: -10 }} className="bg-white p-10 rounded-[3rem] shadow-sm border border-slate-100 group">
+              <div className="w-16 h-16 bg-emerald-50 rounded-2xl flex items-center justify-center mb-8 group-hover:bg-[#12966b] transition-colors">
+                <MapPin className="text-[#12966b] group-hover:text-white" size={32} />
+              </div>
+              <h4 className="text-xl font-black text-[#043927] mb-4 uppercase">Asaba Fresh</h4>
+              <p className="text-slate-500 text-sm leading-relaxed mb-6">Straight from our oven in Asaba to your hands in record time.</p>
+              <div className="flex items-center gap-2 text-[10px] font-bold text-emerald-600 uppercase tracking-widest mt-auto">
+                <FaCheckCircle /> Locally Handcrafted
+              </div>
+            </motion.div>
           </div>
         </div>
       </section>
 
       {/* --- TESTIMONIALS --- */}
-      <section className="py-20 bg-white overflow-hidden">
+      <section className="py-20 bg-white">
         <div className="container mx-auto px-6 text-center">
             <h3 className="text-amber-500 font-black uppercase tracking-[0.3em] text-sm mb-4">Real Reviews</h3>
             <div className="relative max-w-3xl mx-auto h-[250px]">
@@ -218,41 +310,37 @@ export default function HomePage() {
         <div className="container mx-auto px-6">
           <div className="grid lg:grid-cols-2 gap-20 mb-20">
             <div>
-              <h2 className="text-5xl font-black mb-8 uppercase tracking-tighter">Get It While <br/> It's <span className="text-amber-500 italic">Warm.</span></h2>
+              <h2 className="text-5xl font-black mb-8 uppercase tracking-tighter leading-none">Get It While <br/> It's <span className="text-amber-500 italic font-serif">Warm.</span></h2>
               <div className="space-y-6 text-emerald-100">
                 <div className="flex items-center gap-6 group">
-                  <div className="w-12 h-12 rounded-full border border-emerald-700 flex items-center justify-center group-hover:bg-amber-500 group-hover:border-transparent transition-all"><FaMapMarkerAlt /></div>
-                  <p className="text-lg">0 Asaba Specialist Hospital Road, Delta State</p>
+                  <div className="w-12 h-12 rounded-full border border-emerald-700 flex items-center justify-center group-hover:bg-amber-50 group-hover:border-transparent transition-all"><FaMapMarkerAlt /></div>
+                  <p className="text-lg">Specialist Hospital Road, Asaba, Delta State</p>
                 </div>
                 <div className="flex items-center gap-6 group">
-                  <div className="w-12 h-12 rounded-full border border-emerald-700 flex items-center justify-center group-hover:bg-amber-500 group-hover:border-transparent transition-all"><FaPhoneAlt /></div>
+                  <div className="w-12 h-12 rounded-full border border-emerald-700 flex items-center justify-center group-hover:bg-amber-50 group-hover:border-transparent transition-all"><FaPhoneAlt /></div>
                   <p className="text-lg">+234 800 000 0000</p>
-                </div>
-                <div className="flex items-center gap-6 group">
-                  <div className="w-12 h-12 rounded-full border border-emerald-700 flex items-center justify-center group-hover:bg-amber-500 group-hover:border-transparent transition-all"><FaEnvelope /></div>
-                  <p className="text-lg">impactbakeryasb@gmail.com</p>
                 </div>
               </div>
             </div>
 
-            <div className="bg-white/5 backdrop-blur-lg p-10 rounded-[3rem] border border-white/10 shadow-2xl">
+            <div className="bg-white/5 backdrop-blur-lg p-10 rounded-[3rem] border border-white/10">
               <form className="space-y-4">
                 <div className="grid md:grid-cols-2 gap-4">
-                   <input className="w-full bg-emerald-950/50 border border-emerald-800 p-4 rounded-2xl outline-none focus:border-amber-500 transition-all" placeholder="Name" />
-                   <input className="w-full bg-emerald-950/50 border border-emerald-800 p-4 rounded-2xl outline-none focus:border-amber-500 transition-all" placeholder="Phone" />
+                   <input className="w-full bg-emerald-950/50 border border-emerald-800 p-4 rounded-2xl outline-none" placeholder="Name" />
+                   <input className="w-full bg-emerald-950/50 border border-emerald-800 p-4 rounded-2xl outline-none" placeholder="Phone" />
                 </div>
-                <textarea className="w-full bg-emerald-950/50 border border-emerald-800 p-4 rounded-2xl outline-none focus:border-amber-500 transition-all h-32" placeholder="Message" />
-                <button className="w-full bg-amber-600 text-white font-black py-4 rounded-2xl hover:bg-amber-700 transition-all shadow-lg active:scale-95">SEND MESSAGE</button>
+                <textarea className="w-full bg-emerald-950/50 border border-emerald-800 p-4 rounded-2xl outline-none h-32" placeholder="Message" />
+                <button className="w-full bg-amber-600 text-white font-black py-4 rounded-2xl hover:bg-amber-700 transition-all">SEND MESSAGE</button>
               </form>
             </div>
           </div>
           
-          <div className="pt-12 border-t border-emerald-900 flex flex-col md:flex-row justify-between items-center gap-6">
-            <p className="text-emerald-700 font-bold text-sm uppercase tracking-widest italic text-center md:text-left">IMPACT BAKERY — HANDCRAFTED DAILY</p>
-            <div className="flex gap-8 text-sm font-bold opacity-60">
-              <a href="#" className="hover:text-amber-500 transition-colors">INSTAGRAM</a>
-              <a href="#" className="hover:text-amber-500 transition-colors">FACEBOOK</a>
-              <a href="#" className="hover:text-amber-500 transition-colors">WHATSAPP</a>
+          <div className="pt-12 border-t border-emerald-900 flex flex-col md:flex-row justify-between items-center gap-6 opacity-60 text-xs font-bold tracking-widest">
+          <p className="uppercase">IMPACT BAKERY — HANDCRAFTED DAILY</p>
+            <div className="flex gap-8">
+              <a href="#">INSTAGRAM</a>
+              <a href="#">FACEBOOK</a>
+              <a href="#">WHATSAPP</a>
             </div>
           </div>
         </div>
@@ -261,17 +349,12 @@ export default function HomePage() {
       {/* --- PRODUCT MODAL --- */}
       <AnimatePresence>
         {activeProduct && (
-          <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} className="fixed inset-0 z-[100] flex items-center justify-center p-6 bg-black/80 backdrop-blur-md">
+          <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} className="fixed inset-0 z-[100] flex items-center justify-center p-6 bg-black/90 backdrop-blur-md">
             <motion.div 
-              initial={{ scale: 0.9, y: 20 }} 
-              animate={{ scale: 1, y: 0 }} 
-              exit={{ scale: 0.9, y: 20 }} 
+              initial={{ scale: 0.9, y: 20 }} animate={{ scale: 1, y: 0 }} exit={{ scale: 0.9, y: 20 }} 
               className="bg-white rounded-[3rem] max-w-4xl w-full overflow-hidden shadow-2xl relative"
             >
-              <button 
-                onClick={() => setActiveProduct(null)} 
-                className="absolute top-6 right-6 text-slate-400 hover:text-rose-500 transition-colors z-[110]"
-              >
+              <button onClick={() => setActiveProduct(null)} className="absolute top-6 right-6 text-slate-400 hover:text-rose-500 z-[110]">
                 <FaTimes size={24} />
               </button>
               <div className="grid md:grid-cols-2">
@@ -280,15 +363,19 @@ export default function HomePage() {
                 </div>
                 <div className="p-10 md:p-16 flex flex-col justify-center">
                   <span className="text-amber-500 font-bold text-sm tracking-[0.3em] uppercase mb-2">Premium Selection</span>
-                  <h2 className="text-4xl font-black text-[#043927] mb-6 tracking-tighter uppercase">{activeProduct.name}</h2>
+                  <h2 className="text-4xl font-black text-[#043927] mb-6 uppercase tracking-tighter leading-tight">{activeProduct.name}</h2>
                   <p className="text-slate-600 text-lg leading-relaxed mb-8">{activeProduct.desc}</p>
                   <div className="flex items-center justify-between mb-8">
                     <span className="text-3xl font-black text-[#043927]">{activeProduct.price}</span>
                     <span className="bg-emerald-50 text-emerald-600 px-4 py-1 rounded-full text-xs font-bold">In Stock</span>
                   </div>
                   <div className="flex gap-4">
-                    <button className="flex-1 bg-amber-600 text-white font-black py-4 rounded-2xl hover:bg-amber-700 transition-all shadow-lg active:scale-95">ORDER ON WHATSAPP</button>
-                    <button onClick={() => setActiveProduct(null)} className="px-6 py-4 border border-slate-200 rounded-2xl hover:bg-slate-50 transition-all font-bold">Close</button>
+                    <button 
+                      onClick={() => handleOrder(activeProduct.name)}
+                      className="flex-1 bg-amber-600 text-white font-black py-4 rounded-2xl hover:bg-amber-700 transition-all flex items-center justify-center gap-2"
+                    >
+                      ORDER ON WHATSAPP <FaWhatsapp />
+                    </button>
                   </div>
                 </div>
               </div>
