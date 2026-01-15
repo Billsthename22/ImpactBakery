@@ -165,12 +165,12 @@ export default function HomePage() {
               </h2>
               <div className="space-y-4 text-slate-600 text-lg leading-relaxed">
                 <p>Impact Bakery began with a simple mission: to rescue bread from the era of mass production. Every loaf we bake undergoes a long fermentation process, giving it that unmistakable depth of flavor.</p>
-                <p>We don't use shortcuts. Just flour, water, salt, and a passion for the perfect crumb.</p>
+                <p>We don&apos;t use shortcuts. Just flour, water, salt, and a passion for the perfect crumb.</p>
               </div>
               <div className="grid grid-cols-2 gap-6 pt-4 border-t border-slate-100">
                 <div>
                   <h4 className="font-bold text-[#043927]">Wholesale</h4>
-                  <p className="text-sm text-slate-500">Partnering with Asaba's finest restaurants and cafes.</p>
+                  <p className="text-sm text-slate-500">Partnering with Asaba&apos;s finest restaurants and cafes.</p>
                 </div>
                 <div>
                   <h4 className="font-bold text-[#043927]">Retail</h4>
@@ -252,7 +252,7 @@ export default function HomePage() {
                 <Wheat className="text-amber-600 group-hover:text-white" size={32} />
               </div>
               <h4 className="text-xl font-black text-[#043927] mb-4 uppercase">Premium Flour</h4>
-              <p className="text-slate-500 text-sm leading-relaxed mb-6">Unbleached, high-protein flour for that signature Impact "bounce".</p>
+              <p className="text-slate-500 text-sm leading-relaxed mb-6">Unbleached, high-protein flour for that signature Impact &quot;bounce&quot;.</p>
               <div className="flex items-center gap-2 text-[10px] font-bold text-amber-600 uppercase tracking-widest mt-auto">
                 <FaCheckCircle /> 100% Natural Grains
               </div>
@@ -297,7 +297,7 @@ export default function HomePage() {
                   className="py-10"
                 >
                   <FaStar className="text-amber-400 text-4xl mx-auto mb-6" />
-                  <p className="text-3xl md:text-4xl font-black text-[#043927] leading-tight italic">"{testimonials[testiIndex].text}"</p>
+                  <p className="text-3xl md:text-4xl font-black text-[#043927] leading-tight italic">&quot;{testimonials[testiIndex].text}&quot;</p>
                   <p className="mt-8 font-bold text-slate-400 uppercase tracking-widest">— {testimonials[testiIndex].name}</p>
                 </motion.div>
               </AnimatePresence>
@@ -310,7 +310,7 @@ export default function HomePage() {
         <div className="container mx-auto px-6">
           <div className="grid lg:grid-cols-2 gap-20 mb-20">
             <div>
-              <h2 className="text-5xl font-black mb-8 uppercase tracking-tighter leading-none">Get It While <br/> It's <span className="text-amber-500 italic font-serif">Warm.</span></h2>
+              <h2 className="text-5xl font-black mb-8 uppercase tracking-tighter leading-none">Get It While <br/> It&apos;s <span className="text-amber-500 italic font-serif">Warm.</span></h2>
               <div className="space-y-6 text-emerald-100">
                 <div className="flex items-center gap-6 group">
                   <div className="w-12 h-12 rounded-full border border-emerald-700 flex items-center justify-center group-hover:bg-amber-50 group-hover:border-transparent transition-all"><FaMapMarkerAlt /></div>
