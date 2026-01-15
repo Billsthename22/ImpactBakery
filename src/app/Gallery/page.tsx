@@ -12,15 +12,23 @@ const montserrat = Montserrat({ subsets: ['latin'], weight: ['400', '700'] });
 const quicksand = Quicksand({ subsets: ['latin'], weight: ['500', '700'] });
 
 export default function GalleryPage() {
+  // 1. Defined state to handle string or null explicitly
   const [active, setActive] = useState<string | null>(null);
 
+  // 2. Fixed the array (removed empty commas and gaps)
   const images = [
-     "/ImpactBakeryimages/IMG_1286.JPG","/ImpactBakeryimages/IMG_1314.JPG",
-    "/ImpactBakeryimages/IMG_1287.JPG", "/ImpactBakeryimages/IMG_1288.JPG",
-    "/ImpactBakeryimages/IMG_1289.JPG", "/ImpactBakeryimages/IMG_1290.JPG",
-  , "/ImpactBakeryimages/IMG_1298.JPG","/ImpactBakeryimages/IMG_1310.JPG",
-    "/ImpactBakeryimages/IMG_1301.JPG","/ImpactBakeryimages/IMG_1314.JPG",
-    "/ImpactBakeryimages/IMG_1307.JPG", "/ImpactBakeryimages/IMG_1308.JPG",
+    "/ImpactBakeryimages/IMG_1286.JPG", 
+    "/ImpactBakeryimages/IMG_1314.JPG",
+    "/ImpactBakeryimages/IMG_1287.JPG", 
+    "/ImpactBakeryimages/IMG_1288.JPG",
+    "/ImpactBakeryimages/IMG_1289.JPG", 
+    "/ImpactBakeryimages/IMG_1290.JPG",
+    "/ImpactBakeryimages/IMG_1298.JPG",
+    "/ImpactBakeryimages/IMG_1310.JPG",
+    "/ImpactBakeryimages/IMG_1301.JPG",
+    "/ImpactBakeryimages/IMG_1314.JPG",
+    "/ImpactBakeryimages/IMG_1307.JPG", 
+    "/ImpactBakeryimages/IMG_1308.JPG",
   ];
 
   return (
@@ -61,12 +69,13 @@ export default function GalleryPage() {
             >
               {images.map((src, index) => (
                 <motion.div
-                  key={src}
+                  key={`${src}-${index}`} // Using index to avoid keys clashing if same image is used twice
                   initial={{ opacity: 0, scale: 0.9 }}
                   whileInView={{ opacity: 1, scale: 1 }}
                   viewport={{ once: true }}
                   transition={{ delay: index * 0.05 }}
-                  onClick={() => setActive(src)}
+                  // 3. Force-cast src as string to satisfy the StateAction type
+                  onClick={() => setActive(src as string)}
                   className={`relative overflow-hidden rounded-[2rem] cursor-pointer group bg-white border border-slate-100
                     ${index % 7 === 0 ? "md:col-span-2 md:row-span-2" : "col-span-1"}
                   `}
@@ -79,7 +88,6 @@ export default function GalleryPage() {
                     className="w-full h-full object-cover transition-transform duration-[1.5s] ease-out group-hover:scale-110 group-hover:rotate-1"
                   />
                   
-                  {/* Subtle Hover Gradient */}
                   <div className="absolute inset-0 bg-gradient-to-t from-[#043927]/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-end p-8">
                       <div className="flex items-center gap-3 text-white">
                         <div className="p-3 bg-amber-500 rounded-2xl shadow-xl">
