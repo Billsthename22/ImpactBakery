@@ -189,7 +189,7 @@ export default function AboutUs() {
                   <h2 className="text-[#043927] text-4xl md:text-6xl font-black uppercase mb-10 leading-none">
                     Enriching <br /> <span className="text-amber-600 italic font-serif lowercase">Everyday living.</span>
                   </h2>
-                  <Link href="/products" className="inline-flex items-center gap-4 bg-amber-600 text-white px-12 py-6 rounded-2xl font-black text-sm uppercase tracking-widest hover:bg-[#043927] transition-all shadow-xl shadow-amber-600/20 active:scale-95">
+                  <Link href="/Products" className="inline-flex items-center gap-4 bg-amber-600 text-white px-12 py-6 rounded-2xl font-black text-sm uppercase tracking-widest hover:bg-[#043927] transition-all shadow-xl shadow-amber-600/20 active:scale-95">
                     Explore Our Products <FaArrowRight />
                   </Link>
                </div>
