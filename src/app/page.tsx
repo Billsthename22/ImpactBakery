@@ -26,9 +26,9 @@ type Product = {
 };
 
 const PRODUCTS: Product[] = [
-  { id: 1, name: "Impact Yummy Yummy", desc: "A tangy, chewy crusty loaf. Perfect for toasts and sandwiches.", price: "₦2,500", img: "/Bread/Impactyummyyummy.png" },
-  { id: 2, name: "Impact Tea Mate", desc: "Nutty whole grain bread, healthy and hearty.", price: "₦2,000", img: "/Bread/Teamate.png" },
-  { id: 3, name: "Impact Jumbo", desc: "Crispy crust with a soft interior — classic loaf.", price: "₦1,800", img: "/Bread/jumbobread.png" },
+  { id: 1, name: "Impact Yummy Yummy", desc: "A tangy, chewy crusty loaf. Perfect for toasts and sandwiches.", price: "₦1,300", img: "/yummy.jpg" },
+  { id: 2, name: "Impact Tea Mate", desc: "Nutty whole grain bread, healthy and hearty.", price: "₦2,200", img: "/teamatespecial.jpg" },
+  { id: 3, name: "Impact Jumbo", desc: "Crispy crust with a soft interior — classic loaf.", price: "₦1,500", img: "/teamatejumbo.jpg" },
   { id: 4, name: "Tea Mate Jumbo", desc: "Open crumb, great for paninis and dipping.", price: "₦2,200", img: "/bread4.jpg" },
   { id: 5, name: "Impact Mini", desc: "Dense and flavorful, perfect for snacks.", price: "₦2,300", img: "/Bread/ImpactMini.png" },
 ];
@@ -182,56 +182,72 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* --- PRODUCT SHOWCASE --- */}
-      <section id="products" className="py-24 bg-[#043927] rounded-t-[3rem] md:rounded-t-[5rem] -mt-12 relative z-20 shadow-2xl">
-        <div className="container mx-auto px-6">
-          <div className="flex flex-col md:flex-row justify-between items-end mb-16">
-            <div>
-              <span className="text-amber-400 font-bold uppercase tracking-widest text-sm">The Bakery Shop</span>
-              <h2 className="text-4xl md:text-6xl font-black text-white mt-2 uppercase tracking-tighter">Our Signatures</h2>
+   {/* --- PRODUCT SHOWCASE --- */}
+<section id="products" className="py-24 bg-[#043927] rounded-t-[3rem] md:rounded-t-[5rem] -mt-12 relative z-20 shadow-2xl">
+  <div className="container mx-auto px-6">
+    <div className="flex flex-col md:flex-row justify-between items-end mb-16">
+      <div>
+        <span className="text-amber-400 font-bold uppercase tracking-widest text-sm underline decoration-amber-400/30 underline-offset-8">The Bakery Shop</span>
+        <h2 className="text-4xl md:text-6xl font-black text-white mt-4 uppercase tracking-tighter">Our Signatures</h2>
+      </div>
+      <p className="text-emerald-200 max-w-xs mt-4 md:mt-0 italic opacity-80 leading-relaxed">
+        Freshly baked every morning. Please order early to ensure availability.
+      </p>
+    </div>
+
+    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
+      {PRODUCTS.slice(0, 3).map((p) => (
+        <motion.div 
+          key={p.id}
+          whileHover={{ y: -10 }}
+          className="bg-[#054d35] rounded-[2.5rem] p-4 border border-emerald-800/50 transition-all group cursor-pointer hover:bg-[#065a3e]"
+          onClick={() => setActiveProduct(p)}
+        >
+          {/* IMAGE BOX - Adjusted to "fit" better */}
+          <div className="relative h-80 w-full rounded-[2rem] overflow-hidden mb-6 bg-emerald-900/50 shadow-inner">
+            <Image 
+              src={p.img} 
+              alt={p.name} 
+              fill 
+              className="object-cover group-hover:scale-105 transition-transform duration-1000" 
+              sizes="(max-width: 768px) 100vw, 33vw"
+            />
+            
+            {/* Subtle Overlay to make the image "sit" in the card */}
+            <div className="absolute inset-0 ring-1 ring-inset ring-black/10 rounded-[2rem]" />
+
+            <div className="absolute top-5 left-5 bg-white/95 backdrop-blur-md px-4 py-1.5 rounded-full font-black text-[#043927] shadow-xl text-sm">
+              {p.price}
             </div>
-            <p className="text-emerald-200 max-w-xs mt-4 md:mt-0 italic opacity-80">
-              Freshly baked every morning. Please order early to ensure availability.
+          </div>
+
+          <div className="px-4 pb-4">
+            <h3 className="text-2xl font-black text-white mb-2 group-hover:text-amber-400 transition-colors uppercase tracking-tight">
+              {p.name}
+            </h3>
+            <p className="text-emerald-100/70 text-sm mb-6 line-clamp-2 leading-relaxed font-medium">
+              {p.desc}
             </p>
+            <button className="w-full bg-amber-500 text-[#043927] py-4 rounded-2xl font-black flex items-center justify-center gap-3 hover:bg-white hover:text-amber-600 transition-all group-hover:shadow-lg group-hover:shadow-amber-500/20">
+              VIEW BREAD DETAILS <FaArrowRight size={14} className="group-hover:translate-x-1 transition-transform" />
+            </button>
           </div>
+        </motion.div>
+      ))}
+    </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
-            {PRODUCTS.slice(0, 3).map((p) => (
-              <motion.div 
-                key={p.id}
-                whileHover={{ y: -10 }}
-                className="bg-[#054d35] rounded-[2.5rem] p-4 border border-emerald-800 transition-all group cursor-pointer"
-                onClick={() => setActiveProduct(p)}
-              >
-                <div className="relative h-72 rounded-[2rem] overflow-hidden mb-6">
-                  <Image src={p.img} alt={p.name} fill className="object-cover group-hover:scale-110 transition-transform duration-700" />
-                  <div className="absolute top-4 left-4 bg-white/90 backdrop-blur-md px-4 py-1 rounded-full font-bold text-[#043927] shadow-lg">
-                    {p.price}
-                  </div>
-                </div>
-                <div className="px-4 pb-4">
-                  <h3 className="text-2xl font-black text-white mb-2">{p.name}</h3>
-                  <p className="text-emerald-100/60 text-sm mb-6 line-clamp-2 leading-relaxed">{p.desc}</p>
-                  <button className="w-full bg-amber-500 text-white py-4 rounded-2xl font-bold flex items-center justify-center gap-2 hover:bg-amber-600 transition-all">
-                    View Bread Details <FaArrowRight size={14} />
-                  </button>
-                </div>
-              </motion.div>
-            ))}
-          </div>
-
-          <div className="mt-20 flex justify-center">
-            <Link href="/Products" className="group flex flex-col items-center gap-4">
-              <div className="bg-white/5 hover:bg-white/10 border border-emerald-700/50 px-8 py-4 rounded-full transition-all duration-300 backdrop-blur-sm">
-                <span className="text-white font-bold tracking-widest flex items-center gap-3">
-                  VIEW ALL PRODUCTS <FaArrowRight className="group-hover:translate-x-2 transition-transform text-amber-500" />
-                </span>
-              </div>
-            </Link>
-          </div>
+    <div className="mt-20 flex justify-center">
+      <Link href="/Products" className="group">
+        <div className="bg-white/5 hover:bg-white/10 border border-emerald-700/50 px-10 py-5 rounded-full transition-all duration-300 backdrop-blur-sm flex items-center gap-4">
+          <span className="text-white font-black tracking-[0.2em] text-xs">
+            VIEW ALL PRODUCTS 
+          </span>
+          <FaArrowRight className="group-hover:translate-x-2 transition-transform text-amber-500" />
         </div>
-      </section>
-
+      </Link>
+    </div>
+  </div>
+</section>
       {/* --- REDESIGNED WHY US SECTION --- */}
       <section className="py-24 bg-[#FDFCF6] overflow-hidden">
         <div className="container mx-auto px-6">
