@@ -100,7 +100,7 @@ export default function HomePage() {
             </motion.div>
 
             <h1 className="text-6xl md:text-[10rem] font-black text-white leading-[0.8] tracking-tighter mb-8 uppercase">
-              The <span className="text-amber-500 italic font-serif font-light lowercase">Impact</span> <br/> 
+              De&apos; <span className="text-amber-500 italic font-serif font-light lowercase">Impact</span> <br/> 
               <span className="relative">
                 Crust
                 <svg className="absolute -bottom-2 left-0 w-full h-3 text-amber-500/40" viewBox="0 0 100 10" preserveAspectRatio="none">

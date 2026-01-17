@@ -79,7 +79,7 @@ export default function AboutUs() {
                   Industrial <br/><span className="text-amber-600">Precision.</span>
                 </h2>
                 <p className="text-lg text-slate-600 leading-relaxed mb-8">
-                  As a proud subsidiary of <strong>Impact Manufacturers</strong>, we operate on a foundation of industrial excellence. Unlike traditional bakeries, we leverage modern production standards to ensure consistency in every loaf.
+                  As a proud subsidiary of <strong>New Path Global Limited</strong>, we operate on a foundation of industrial excellence. Unlike traditional bakeries, we leverage modern production standards to ensure consistency in every loaf.
                 </p>
                 <div className="flex items-center gap-4 text-[#043927] font-bold group cursor-pointer">
                   <div className="w-12 h-12 rounded-full border border-[#043927] flex items-center justify-center group-hover:bg-[#043927] group-hover:text-white transition-all">
