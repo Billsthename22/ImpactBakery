@@ -32,7 +32,7 @@ export default function ProductsPage() {
   const handleOrder = (productName: string) => {
     const message = `Hello Impact Bakery, I would like to order: ${productName}`;
     // Replace with your actual WhatsApp number
-    window.open(`https://wa.me/2348000000000?text=${encodeURIComponent(message)}`, "_blank");
+    window.open(`https://wa.me/2348050552109?text=${encodeURIComponent(message)}`, "_blank");
   };
 
   return (
