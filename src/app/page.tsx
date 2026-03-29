@@ -334,7 +334,7 @@ export default function HomePage() {
                 </div>
                 <div className="flex items-center gap-6 group">
                   <div className="w-12 h-12 rounded-full border border-emerald-700 flex items-center justify-center group-hover:bg-amber-50 group-hover:border-transparent transition-all"><FaPhoneAlt /></div>
-                  <p className="text-lg">+234 800 000 0000</p>
+                  <p className="text-lg">+234 805 055 2109</p>
                 </div>
               </div>
             </div>
